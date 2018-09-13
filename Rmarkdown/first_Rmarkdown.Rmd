@@ -1,0 +1,42 @@
+---
+title: "Simple document"
+output:  
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+
+    
+---
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r sample_chunk}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+
+```{r sample_chunk2}
+library(tidyverse)
+
+
+set.seed(1)
+
+plot_df = tibble(
+  sample = rnorm(500),
+  abs_sample = abs(sample)
+)
+
+ggplot(plot_df, aes(x = abs_sample)) + geom_histogram()
+```
+
+The median of the variable containing absolute values is 
+`r round(median(plot_df$abs_sample), digits = 2)`.
